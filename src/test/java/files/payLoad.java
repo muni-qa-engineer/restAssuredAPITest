@@ -48,4 +48,15 @@ public class payLoad {
 	        + "  ]\n"
 	        + "}";
 	}
+	
+	public static String libraryBook(String isbn, String aisle) {
+		
+		return "{\n"
+				+ "\"name\":\"Learn Appium Automation with RahulShetty\",\n"
+				+ "\"isbn\":\""+isbn+"\",\n"
+				+ "\"aisle\":\""+aisle+"\",\n"
+				+ "\"author\":\"Sekhar\"\n"
+				+ "}";
+		
+	}
 }

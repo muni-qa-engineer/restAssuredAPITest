@@ -6,6 +6,7 @@ import io.restassured.path.json.JsonPath;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
+
 import org.testng.annotations.Test;
 
 import files.payLoad;
@@ -28,7 +29,10 @@ public class FirstAPITest {
 		RestAssured.baseURI = "https://rahulshettyacademy.com";
 		String response = given()
 		.header("Content-Type", "application/json")
-		.queryParam("key", "qaclick123").body(payLoad.addPlace())
+		.queryParam("key", "qaclick123")
+		.body(payLoad.addPlace())
+//		Alternate way to access the JsonPayload is below line
+//		.body(new String(Files.readAllBytes(Paths.get("enter the json file path")))) -> we get error so addThrowDecl
 		.when().post("/maps/api/place/add/json")
 		.then().log().all()
 		.assertThat().statusCode(200).body("scope", equalTo("APP"))
