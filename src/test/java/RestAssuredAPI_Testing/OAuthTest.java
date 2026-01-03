@@ -3,7 +3,12 @@ package RestAssuredAPI_Testing;
 //import io.restassured.RestAssured;
 import static io.restassured.RestAssured.*;
 
+import java.util.List;
+
 import io.restassured.path.json.JsonPath;
+import pojo.api;
+import pojo.deserialization;
+import pojo.webAutomation;
 
 public class OAuthTest {
 
@@ -25,12 +30,26 @@ public class OAuthTest {
 		JsonPath jp = new JsonPath(response);
 		String accessToken = jp.getString("access_token");
 		
-		String getResponse = given()
+		deserialization getResponse = given()
 		.queryParam("access_token", accessToken)
 		.when().log().all()
-		.get("https://rahulshettyacademy.com/oauthapi/getCourseDetails")
-		.asString();
-		System.out.println(getResponse);
+		.get("https://rahulshettyacademy.com/oauthapi/getCourseDetails").as(deserialization.class);
+		System.out.println(getResponse.getInstructor());
+		
+		getResponse.getCourses().getApi().get(1).getCourseTitle();
+		
+		List<api> apiCourseprice = getResponse.getCourses().getApi();
+		for(int i=0; i<apiCourseprice.size(); i++) {
+			if(apiCourseprice.get(i).getCourseTitle().equalsIgnoreCase("SoapUI Webservices testing")) {
+				System.out.println("Price of the course is " + apiCourseprice.get(i).getPrice());
+			}
+		}
+		
+		List<webAutomation> webAutomationCourse = getResponse.getCourses().getWebAutomation();
+		for(int j =0; j<webAutomationCourse.size(); j++) {
+			System.out.println(webAutomationCourse.get(j).getCourseTitle());
+		}
+		
 		
 	}
 	
