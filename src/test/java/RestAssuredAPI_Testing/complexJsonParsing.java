@@ -1,4 +1,4 @@
-package RESTapiTesting;
+package RestAssuredAPI_Testing;
 
 import files.payLoad;
 import io.restassured.path.json.JsonPath;

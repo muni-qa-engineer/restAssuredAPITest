@@ -59,4 +59,17 @@ public class payLoad {
 				+ "}";
 		
 	}
+	public static String createBugPayload() {
+        return "{\n" +
+                "  \"fields\": {\n" +
+                "    \"project\": {\n" +
+                "      \"key\": \"SCRUM\"\n" +
+                "    },\n" +
+                "    \"summary\": \"Website items are not working - automation Rest Assured\",\n" +
+                "    \"issuetype\": {\n" +
+                "      \"name\": \"Bug\"\n" +
+                "    }\n" +
+                "  }\n" +
+                "}";
+    }
 }
